@@ -1,0 +1,41 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 2000
+
+resilience4j:
+  retry:
+    retryAspectOrder: 1
+    instances:
+      productServiceRetry:
+        maxAttempts: 3
+        waitDuration: 1s
+        retryExceptions:
+         - java.lang.Exception
+
+  circuitbreaker:
+    circuitBreakerAspectOrder: 2
+    instances:
+      productService:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
+logging:
+ level:
+   io.github.resilience4j: DEBUG
+   io.github.resilience4j.retry: DEBUG
