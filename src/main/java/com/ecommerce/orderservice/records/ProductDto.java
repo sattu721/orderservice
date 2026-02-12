@@ -1,13 +1,5 @@
-package com.ecommerce.orderservice.dto;
+package com.ecommerce.orderservice.records;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-public class ProductDto {
-	private Long id;
-	private String name;
-	private Double price;
-
+public record ProductDto(Long id, String name, Double price) {
+	
 }

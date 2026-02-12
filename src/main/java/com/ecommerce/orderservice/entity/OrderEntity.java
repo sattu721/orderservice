@@ -18,4 +18,5 @@ public class OrderEntity {
     private Long id;
     private Long productId;
     private Integer quantity;
+    private String status;
 }
