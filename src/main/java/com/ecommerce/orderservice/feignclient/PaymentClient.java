@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.ecommerce.orderservice.records.PaymentRequest;
 import com.ecommerce.orderservice.records.PaymentResponse;
 
-@FeignClient(name = "payment-service")
+@FeignClient(name = "payment-service",url="http://localhost:8085")
 public interface PaymentClient {
 
     @PostMapping("/payments")
